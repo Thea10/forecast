@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+//import headerimg from './img/headerimg.png';
+//import days from './weather';
 import './App.css';
+import List from './List';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      forecast: '',
+      city: '',
+
+    }
+
+
+  }
+
+  componentWillMount() {
+    fetch("i used the open weather map api")
+      .then(res => res.json())
+      .then(
+      (data) => {
+        this.setState({
+          forecast: data.list,
+          city: data.city
+        })
+      }
+      )
+  }
+
+
+  render() {
+
+    let {forecast, city} = this.state;
+ 
+    let list;
+    if (forecast) {
+      list = forecast.map((day) => {
+        return (
+          <List day = {day.dt_txt} key={day.dt} id={day.dt} img={day.weather.map(mainw => mainw.icon)} weather={day.weather.map(mainw => mainw.main) }  description={day.weather.map(mainw => mainw.description) } details={day.main} />
+        )
+      })
+    }
+    else {
+     list = <h2> Loading...</h2>
+    }
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h3 style={{ margin: 2 + "%", fontWeight: 500 }}>
+            Weather Forecast for {city.name} --Timezone:  {city.timezone}
+          </h3>
+          <div  className="list" >
+            { list}
+          </div>
+
+        </header>
+
+      </div>
+    )
+
+  }
 }
 
 export default App;

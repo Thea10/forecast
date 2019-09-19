@@ -1,33 +1,141 @@
+*, *::before, *::after {
+     box-sizing: none;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 70px;
   pointer-events: none;
+ 
+  border-radius: 5px;
+  box-shadow: rgba(0,0,0, 0.3) 3px 3px 10px 3px;
 }
 
 .App-header {
-  background-color: #282c34;
+ margin: auto 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+ padding: 20px;
   align-items: center;
-  justify-content: center;
+ /*justify-content: center; */
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #6e6e6e;
 }
 
-.App-link {
-  color: #61dafb;
+.list{
+   margin: auto 5%;
+   display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.list > div{
+  width: 80%;
+  border-radius: 5px;
+   margin: 2% auto;
+}
+
+.list div button{
+  margin-bottom: 2%;
+  padding: 5px;
+  border-radius: 5px;
+  background: #013b41;
+  border: #013b41;
+  color: #f5f5f5;
+  transition: all 0.3s;
+}
+
+button:focus{
+  outline: none;
+}
+
+button:focus, .list > div{
+  box-shadow: rgba(0,0,0, 0.4) 10px 10px 10px;
+}
+
+
+.list div img{
+  height: 100px;
+   border-radius: 5px;
+}
+
+/*div .modal-weathercontent{
+  box-shadow: rgba(0,0,0, 0.5) 1px 1px 1px;
+  display: none;
+  width: 80%;
+  margin-top: 3%;
+  flex-direction: column;
+} */
+
+
+div .modal-weathercontent{
+  border: 1px solid #000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,40,55,0.44);
+    display: none;
+    transition: all 0.6s;
+}
+
+div .modal-weathercontent button{
+  padding: 5px;
+  width: 10%;
+  height: 5%;
+  margin: 2%;
+}
+
+.hours{
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white ), color-stop(70%,white), color-stop(100%, lightgrey));
+  background: -webkit-linear-gradient(top, white  0%, white 90%, lightgrey 100% );
+  border-radius: 5px;
+  margin: 2% auto;
+  font-size: 1.5rem;
+  padding: 15px;
+    width: 50vw;
+    height: 50vh;
+}
+
+.hourlist{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: auto 5%;
+}
+
+.hour{
+   box-shadow: rgba(0,0,0, 0.4) 3px 3px 3px 3px ;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 3%;
+  
+} 
+
+
+.hour h5{
+  font-weight: 500;
+}
+
+.hour span{
+  font-weight: 650;
+  color:#013b41;
+}
+
+div .show{
+  display: block;
+}
+
+
+@media (max-width:767px) {
+
+  .list{
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
-  to {
-    transform: rotate(360deg);
-  }
+   .list > div, .hours{
+        min-width: 80%;
+    }
+
 }

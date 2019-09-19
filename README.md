@@ -1,3 +1,5 @@
+visit https://openweathermap.org for more help on using thier api
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

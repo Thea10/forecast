@@ -5,6 +5,7 @@ import './App.css';
 import List from './List';
 
 
+
 class App extends Component {
 
   constructor() {
@@ -18,8 +19,13 @@ class App extends Component {
 
   }
 
+  
+
   componentWillMount() {
-    fetch("i used the open weather map api")
+
+    const key = process.env.REACT_APP_WEATHER_API_KEY;
+
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?id=2332459&APPID=${key}`)
       .then(res => res.json())
       .then(
       (data) => {

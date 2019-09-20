@@ -13,7 +13,6 @@ class App extends Component {
     this.state = {
       forecast: '',
       city: '',
-
     }
 
 
@@ -51,7 +50,7 @@ class App extends Component {
       })
     }
     else {
-     list = <h2> Loading...</h2>
+     list = <h2> Loading..</h2>
     }
     return (
       <div className="App">

@@ -24,7 +24,7 @@ class App extends Component {
 
     const key = process.env.REACT_APP_WEATHER_API_KEY;
 
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?id=2332459&APPID=${key}`)
+    fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?id=2332459&APPID=${key}`)
       .then(res => res.json())
       .then(
       (data) => {
